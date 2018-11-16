@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Audio Recorder with record, save</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<style>
+body{
+font-family: 'Nunito', sans-serif;
+}
+.btn-login {
+background-color: #59B2E0;
+outline: none;
+color: #fff;
+font-size: 14px;
+height: auto;
+font-weight: normal;
+padding: 10px 0;
+text-transform: uppercase;
+border-color: #59B2E6;
+margin: 0 auto;
+display: block;
+}
+.btn-login:hover{color: #fff;}
+.audio_sec{margin-top: 7%;}
+#rec_sec{text-align: center;}
+#rec_sec audio{vertical-align: middle;}
+.form-inline {
+margin-bottom: 3%;
+float: left;
+width: 100%;
+}
+.form-control{height: 43px}
+.icons {
+font-size: 12px;
+max-width: 100%;
+padding: 5px;
+margin: 0px 10px;
+}
+.ub {
+width: 18%;
+margin: 10px auto;
+height: 36px;
+font-size: 14px;
+margin-left: 2%;
+}
+.well{
+box-shadow: 0px 0px 20px 0px #686d71;
+}
+.rb{
+width: 18%;
+margin: 10px auto;
+height: 36px;
+font-size: 14px;
+float: left;
+margin-right: 2%;
+}
+button#addmoreButton {
+width: 15%;
+margin: 10px auto;
+height: 36px;
+font-size: 14px;
+float: right;
+margin-right: 24%;
+}
+#recordingsList audio {
+width: 60%;
+float: left;
+}
+#recordingsList a.upload_link {
+float: left;
+width: 15%;
+line-height: 40px;
+margin-left: 3%;
+background: #428bca;
+color: #fff;
+text-align: center;
+height: 40px;
+margin-top: 5px;
+border-radius: 5px;
+}
+ol#recordingsList li {
+margin-bottom: 0px;
+display: block;
+float: left;
+width: 100%;
+}
+p.recorded {
+float: left;
+width: 100%;
+text-align: left;
+margin-left: 20px;
+margin-top: 6px;
+}
+.modal-header {
+font-size: 22px;
+text-align: center;
+}
+#count{
+text-align: center;
+font-weight: 600;
+color: #428bca;
+font-size: 32px;
+}
+.modal-content {
+width: 350px;
+margin: 0 auto;
+}
+.btn-primary {
+color: #fff;
+background-color: #2466b3;
+border-color: #2466b3;
+}
+.logo img {
+height: 85px;
+display: block;
+margin: auto;
+margin-bottom: -25px;
+margin-right: 20%;
+}
+span.glyphicon.glyphicon-home {
+background: #2466b3;
+color: #fff;
+padding: 9px 14px;
+font-size: 20px;
+border-radius: 5px;
+}
+.glyphicon{top:2px;}
+</style>
+</head>
+<body>
+
+<div class="container">
+<a href="/audio_recorder/menu/test_1"><span class="glyphicon glyphicon-home"></span></a>
+<div class="logo">
+<img src="https://www.talentsprint.com/misc/landing-pages/aiml/v2/images/ts-iiit-logo.png" alt="logo"/>
+</div>
+<div class="row">
+<div class="col-lg-6 col-lg-offset-5 audio_sec">
+<div class="well bs-component">
+<form class="form-horizontal" id="form_rec" action="">
+<legend>Audio Recorder : test_1</legend>
+<div class="form-group">
+<div class="col-lg-7">
+<p>Recording set : 1 </option>
+</div>
+</div>
+</form>
+</div>
+
+<div id="rec_sec">
+<h3>Recordings</h3>
+<div id="recordingsList" class="record_list">
+<div class="form-inline" id = "0">
+<button class="btn btn-primary icons rb recordButton_0" id="recordButton_0" data-index = "0" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 0
+</button>
+<audio controls="" class = "audio_0" id="audio_0" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_0" id="uploadButton_0" data-index = "0" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "1">
+<button class="btn btn-primary icons rb recordButton_1" id="recordButton_1" data-index = "1" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 1
+</button>
+<audio controls="" class = "audio_1" id="audio_1" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_1" id="uploadButton_1" data-index = "1" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "2">
+<button class="btn btn-primary icons rb recordButton_2" id="recordButton_2" data-index = "2" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 2
+</button>
+<audio controls="" class = "audio_2" id="audio_2" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_2" id="uploadButton_2" data-index = "2" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "3">
+<button class="btn btn-primary icons rb recordButton_3" id="recordButton_3" data-index = "3" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 3
+</button>
+<audio controls="" class = "audio_3" id="audio_3" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_3" id="uploadButton_3" data-index = "3" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "4">
+<button class="btn btn-primary icons rb recordButton_4" id="recordButton_4" data-index = "4" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 4
+</button>
+<audio controls="" class = "audio_4" id="audio_4" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_4" id="uploadButton_4" data-index = "4" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "5">
+<button class="btn btn-primary icons rb recordButton_5" id="recordButton_5" data-index = "5" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 5
+</button>
+<audio controls="" class = "audio_5" id="audio_5" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_5" id="uploadButton_5" data-index = "5" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "6">
+<button class="btn btn-primary icons rb recordButton_6" id="recordButton_6" data-index = "6" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 6
+</button>
+<audio controls="" class = "audio_6" id="audio_6" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_6" id="uploadButton_6" data-index = "6" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "7">
+<button class="btn btn-primary icons rb recordButton_7" id="recordButton_7" data-index = "7" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 7
+</button>
+<audio controls="" class = "audio_7" id="audio_7" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_7" id="uploadButton_7" data-index = "7" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "8">
+<button class="btn btn-primary icons rb recordButton_8" id="recordButton_8" data-index = "8" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 8
+</button>
+<audio controls="" class = "audio_8" id="audio_8" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_8" id="uploadButton_8" data-index = "8" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "9">
+<button class="btn btn-primary icons rb recordButton_9" id="recordButton_9" data-index = "9" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record 9
+</button>
+<audio controls="" class = "audio_9" id="audio_9" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_9" id="uploadButton_9" data-index = "9" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "10">
+<button class="btn btn-primary icons rb recordButton_10" id="recordButton_10" data-index = "10" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record YES
+</button>
+<audio controls="" class = "audio_10" id="audio_10" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_10" id="uploadButton_10" data-index = "10" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+<div class="form-inline" id = "11">
+<button class="btn btn-primary icons rb recordButton_11" id="recordButton_11" data-index = "11" disabled data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-record"></span>
+Record NO
+</button>
+<audio controls="" class = "audio_11" id="audio_11" src="" controlsList="nodownload">
+</audio>
+<button class="btn btn-primary ub icons upload_11" id="uploadButton_11" data-index = "11" disabled>
+<span class="glyphicon glyphicon-upload"></span> Upload
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button id="addmoreButton" class="btn btn-primary icons" disabled>
+<span class="glyphicon glyphicon-record"></span> Add More
+</button>
+</div>
+
+
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="app.js"></script>
+
+<script>
+$(document).ready(function(){
+$(".record_list button:eq(0)" ).removeAttr('disabled');
+document.getElementById("addmoreButton").onclick = function () { location.href = "/audio_recorder/upload/test_1?more=1"; };
+$('.rb').click(function(){
+var record_index = $(this).attr("data-index");
+var group_id = "test_1";
+console.log(group_id);
+startRecording(record_index, group_id);
+});
+});
+</script>
+</body>
+</html>
